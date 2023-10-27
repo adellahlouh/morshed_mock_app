@@ -1,0 +1,51 @@
+List<Map<String, dynamic>> stdMap = [
+  {
+    'id': 0,
+    'fullName': 'Adel Lahlouh',
+    'email': 'adel.lahlouh@abwaab.com',
+    'phoneNumber': '00962789461941',
+    'lastContacted': DateTime.now(),
+  },
+  {
+    'id': 1,
+    'fullName': 'Youssef Guba',
+    'email': 'youssef.guba@abwaab.com',
+    'phoneNumber': '00962789461941',
+    'lastContacted': DateTime.now(),
+  },
+  {
+    'id': 2,
+    'fullName': 'Kareem Tabbaa',
+    'email': 'kareem@abwaab.com',
+    'phoneNumber': '00962789461941',
+    'lastContacted': DateTime.now(),
+  },
+  {
+    'id': 3,
+    'fullName': 'Malik Hassan',
+    'email': 'malik@abwaab.com',
+    'phoneNumber': '00962789461941',
+    'lastContacted': DateTime.now(),
+  },
+  {
+    'id': 4,
+    'fullName': 'Ahmad Ali',
+    'email': 'ahmad@abwaab.com',
+    'phoneNumber': '00962789461941',
+    'lastContacted': DateTime.now(),
+  },
+  {
+    'id': 5,
+    'fullName': 'Yasen Omar',
+    'email': 'Yasen@abwaab.com',
+    'phoneNumber': '00962789461941',
+    'lastContacted': DateTime.now(),
+  },
+  {
+    'id': 6,
+    'fullName': 'Hassan Mohammad',
+    'email': 'hassan@abwaab.com',
+    'phoneNumber': '00962789461941',
+    'lastContacted': DateTime.now(),
+  },
+];
