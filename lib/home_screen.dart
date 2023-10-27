@@ -14,16 +14,16 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: const Text('Morshed '),
-          centerTitle: true,
-          elevation: 8,
-          leading: const SizedBox(),
-          ),
+        title: const Text('Morshed '),
+        centerTitle: true,
+        elevation: 8,
+        leading: const SizedBox(),
+      ),
       body: ListView.builder(
-          itemCount: stdMap.length,
+          itemCount: stdModelList.length,
           shrinkWrap: true,
           itemBuilder: (_, index) {
-            final model = StdModel.fromJson(stdMap[index]);
+            final model = stdModelList[index];
             return Padding(
               padding: const EdgeInsets.all(8.0),
               child: Card(
@@ -46,17 +46,19 @@ class _HomeScreenState extends State<HomeScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           IconButton(
-                              onPressed: () {},
-                              icon: const Icon(
-                                Icons.call,
-                                color: Colors.green,
-                              )),
+                            onPressed: () {},
+                            icon: const Icon(
+                              Icons.call,
+                              color: Colors.green,
+                            ),
+                          ),
                           IconButton(
-                              onPressed: () {},
-                              icon: const Icon(
-                                Icons.message,
-                                color: Colors.blue,
-                              )),
+                            onPressed: () {},
+                            icon: const Icon(
+                              Icons.message,
+                              color: Colors.blue,
+                            ),
+                          ),
                         ],
                       )
                     ],
