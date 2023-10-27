@@ -1,6 +1,7 @@
 import 'package:bouncing_button/bouncing_button.dart';
 import 'package:flutter/material.dart';
 import 'package:morshed_mock_app/colors.dart';
+import 'package:morshed_mock_app/screens/crm_screen.dart';
 
 import 'report_screen.dart';
 
@@ -32,7 +33,16 @@ class HomeScreen extends StatelessWidget {
             _buildItem(
               text: 'CRM',
               images: 'assets/images/crm.png',
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) {
+                      return const CRMScreen();
+                    },
+                  ),
+                );
+              },
             ),
             _buildItem(
               text: 'Reports',

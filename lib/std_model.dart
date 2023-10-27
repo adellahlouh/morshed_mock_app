@@ -1,4 +1,4 @@
-enum OnboardingStatus  { onboard, followup }
+enum OnboardingStatus  { onboard, followup , all}
 
 enum CallStatus {success, pending, failed}
 
