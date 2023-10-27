@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:morshed_mock_app/constants.dart';
 import 'package:morshed_mock_app/std_model.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class CRMScreen extends StatefulWidget {
+  const CRMScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<CRMScreen> createState() => _CRMScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _CRMScreenState extends State<CRMScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
