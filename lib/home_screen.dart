@@ -1,72 +1,77 @@
+import 'package:bouncing_button/bouncing_button.dart';
 import 'package:flutter/material.dart';
-import 'package:morshed_mock_app/constants.dart';
-import 'package:morshed_mock_app/std_model.dart';
+import 'package:morshed_mock_app/colors.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Morshed '),
+        title: const Text(
+          'Morshed',
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+            fontFamily: AppFonts.kFontFamily,
+          ),
+        ),
         centerTitle: true,
         elevation: 8,
         leading: const SizedBox(),
       ),
-      body: ListView.builder(
-          itemCount: stdModelList.length,
-          shrinkWrap: true,
-          itemBuilder: (_, index) {
-            final model = stdModelList[index];
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8.0),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Name : ${model.fullName}',
-                        style: const TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w500),
-                      ),
-                      Text('Email : ${model.email}'),
-                      Text('Phone number : ${model.phoneNumber}'),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          IconButton(
-                            onPressed: () {},
-                            icon: const Icon(
-                              Icons.call,
-                              color: Colors.green,
-                            ),
-                          ),
-                          IconButton(
-                            onPressed: () {},
-                            icon: const Icon(
-                              Icons.message,
-                              color: Colors.blue,
-                            ),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            _buildItem(text: 'CRM', images: 'assets/images/crm.png'),
+
+
+            _buildItem(text: 'Reports', images: 'assets/images/img.png'),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildItem({
+    required String text,
+    required String images,
+  }) {
+    return BouncingButton(
+      onPressed: () {},
+      scaleFactor: 0.2,
+      duration: const Duration(milliseconds: 200),
+      child: SizedBox(
+        height: 200,
+        child: Card(
+          elevation: 3,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Image.asset(
+                images,
+                height: 100,
+                width: 100,
+              ),
+              const SizedBox(height: 16),
+              Text(
+                text,
+                style: const TextStyle(
+                  fontSize: 24,
+                  fontFamily: AppFonts.kFontFamily,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF000000),
                 ),
               ),
-            );
-          }),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
