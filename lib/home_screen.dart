@@ -27,10 +27,16 @@ class HomeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            _buildItem(text: 'CRM', images: 'assets/images/crm.png'),
-
-
-            _buildItem(text: 'Reports', images: 'assets/images/img.png'),
+            _buildItem(
+              text: 'CRM',
+              images: 'assets/images/crm.png',
+              onPressed: () {},
+            ),
+            _buildItem(
+              text: 'Reports',
+              images: 'assets/images/img.png',
+              onPressed: () {},
+            ),
           ],
         ),
       ),
@@ -40,9 +46,10 @@ class HomeScreen extends StatelessWidget {
   Widget _buildItem({
     required String text,
     required String images,
+    required Function() onPressed,
   }) {
     return BouncingButton(
-      onPressed: () {},
+      onPressed: onPressed,
       scaleFactor: 0.2,
       duration: const Duration(milliseconds: 200),
       child: SizedBox(
