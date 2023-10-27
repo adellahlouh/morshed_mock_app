@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:morshed_mock_app/colors.dart';
-import 'package:morshed_mock_app/home_screen.dart';
+import 'package:morshed_mock_app/screens/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
