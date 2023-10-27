@@ -4,7 +4,7 @@ List<StdModel> stdModelList = [
   StdModel(
     id: 1,
     onboardingStatus: OnboardingStatus.onboard,
-    fullName: "John Doe",
+    fullName: "John Doe 1",
     email: "john.doe@example.com",
     phoneNumber: "123-456-7890",
     lastContacted: DateTime(2023, 10, 15),
