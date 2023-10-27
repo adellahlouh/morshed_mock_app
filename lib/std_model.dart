@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:morshed_mock_app/colors.dart';
 
-enum OnboardingStatus { onboard, followup }
+enum OnboardingStatus  { onboard, followup , all}
+
 
 enum CallStatus {
   success(AppColors.kPositive),
