@@ -1,7 +1,17 @@
+import 'package:flutter/material.dart';
+import 'package:morshed_mock_app/colors.dart';
+
 enum OnboardingStatus  { onboard, followup , all}
 
-enum CallStatus {success, pending, failed}
 
+enum CallStatus {
+  success(AppColors.kPositive),
+  pending(AppColors.kPrimarySecondColor),
+  failed(AppColors.kNegative);
+
+  final Color color;
+  const CallStatus(this.color);
+}
 
 class StdModel {
   final int id;
@@ -41,6 +51,4 @@ class StdModel {
     required this.programName,
     required this.callStatus,
   });
-
 }
-
