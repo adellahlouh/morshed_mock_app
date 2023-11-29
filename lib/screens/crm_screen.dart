@@ -5,9 +5,12 @@ import 'package:intl/intl.dart';
 import 'package:morshed_mock_app/colors.dart';
 import 'package:morshed_mock_app/constants.dart';
 import 'package:morshed_mock_app/screens/student_screen.dart';
+import 'package:morshed_mock_app/screens/who_is_the_best_screen.dart';
 import 'package:morshed_mock_app/models/std_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
+
+import 'report_screen.dart';
 
 class CRMScreen extends StatefulWidget {
   const CRMScreen({super.key});
@@ -24,18 +27,115 @@ class _CRMScreenState extends State<CRMScreen>
     return DefaultTabController(
       length: 3,
       child: Scaffold(
+        drawer: Drawer(
+          child: ListView(
+            children: [
+              // Drawer Header - Welcome Message
+
+              const SizedBox(
+                height: 50,
+                child: Text(
+                  'Welcome Morshed 👋',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 24,
+                  ),
+                ),
+              ),
+              ListTile(
+                title: const Text(
+                  'Who Is The Best? 🚀',
+                  style: TextStyle(
+                    color: AppColors.kPrimaryColor,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: AppFonts.kFontFamily,
+                  ),
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) {
+                        return const WhoIsTheBestScreen();
+                      },
+                    ),
+                  );
+                },
+              ),
+
+              // Settings Tile
+              ListTile(
+                title: Text(
+                  'Settings',
+                  style: buildTextStyle,
+                ),
+                onTap: () {},
+              ),
+
+              // About Tile
+              ListTile(
+                title: Text(
+                  'About',
+                  style: buildTextStyle,
+                ),
+                onTap: () {},
+
+              ),
+
+              // Language Tile
+              ListTile(
+                title: Text(
+                  'Language',
+                  style: buildTextStyle,
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) {
+                        return const WhoIsTheBestScreen();
+                      },
+                    ),
+                  );
+                },
+              ),
+
+              // Logout
+              ListTile(
+                title: Text(
+                  'Logout',
+                  style: buildTextStyle,
+                ),
+                onTap: () {},
+
+              ),
+            ],
+          ),
+        ),
         appBar: AppBar(
           title: const Text('Home Screen '),
           centerTitle: true,
           elevation: 8,
-          leading: const SizedBox(),
+          leading: Builder(
+            builder: (context) {
+              return IconButton(
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                },
+                icon: const Icon(
+                  Icons.menu,
+                ),
+              );
+            },
+          ),
           actions: [
             IconButton(
               onPressed: () {},
               icon: const Icon(
                 FontAwesomeIcons.bell,
               ),
-            )
+            ),
           ],
           bottom: const TabBar(
             labelStyle: TextStyle(fontWeight: FontWeight.w500, fontSize: 15),
@@ -66,6 +166,14 @@ class _CRMScreenState extends State<CRMScreen>
           ],
         ),
       ),
+    );
+  }
+
+  TextStyle get buildTextStyle {
+    return TextStyle(
+      color: Colors.black,
+      fontWeight: FontWeight.bold,
+      fontFamily: AppFonts.kFontFamily,
     );
   }
 
@@ -111,7 +219,6 @@ class _CRMWidgetState extends State<_CRMWidget>
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8.0),
                 ),
-
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
@@ -145,11 +252,10 @@ class _CRMWidgetState extends State<_CRMWidget>
                           Text(
                             model.callStatus.name.toUpperCase(),
                             style: TextStyle(
-                              color: model.callStatus.color,
-                              fontWeight: FontWeight.w600,
-                              fontFamily: AppFonts.kFontFamily,
-                              fontSize: 15
-                            ),
+                                color: model.callStatus.color,
+                                fontWeight: FontWeight.w600,
+                                fontFamily: AppFonts.kFontFamily,
+                                fontSize: 15),
                           ),
                         ],
                       ),
@@ -158,9 +264,8 @@ class _CRMWidgetState extends State<_CRMWidget>
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           ElevatedButton.icon(
-                            onPressed: () async{
+                            onPressed: () async {
                               await launchUrlString('tel:${model.phoneNumber}');
-
                             },
                             icon: const Icon(
                               Icons.call,
