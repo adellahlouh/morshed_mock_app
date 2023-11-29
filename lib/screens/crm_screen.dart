@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:morshed_mock_app/colors.dart';
 import 'package:morshed_mock_app/constants.dart';
 import 'package:morshed_mock_app/screens/student_screen.dart';
-import 'package:morshed_mock_app/std_model.dart';
+import 'package:morshed_mock_app/models/std_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 

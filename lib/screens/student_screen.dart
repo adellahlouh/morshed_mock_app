@@ -4,10 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:morshed_mock_app/colors.dart';
-import 'package:morshed_mock_app/std_model.dart';
+import 'package:morshed_mock_app/models/std_model.dart';
 import 'package:morshed_mock_app/widgets/checkbox_list_widget.dart';
 import 'package:morshed_mock_app/widgets/circular_progress_indicator.dart';
 import 'package:morshed_mock_app/widgets/note_widget.dart';
+import 'package:morshed_mock_app/widgets/subject_list_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -126,11 +127,12 @@ class _StudentInfoScreenState extends State<StudentInfoScreen> {
                       children: [
                         // Widgets for Tab 1
                         SingleChildScrollView(
-                            child: TabInfoWidget(
-                          stdModel: widget.stdModel,
-                        )),
+                          child: TabInfoWidget(
+                            stdModel: widget.stdModel,
+                          ),
+                        ),
 
-                        const TabScheduleWidget(),
+                        const SingleChildScrollView(child: TabScheduleWidget()),
                         // Widgets for Tab 2
                         CheckBoxListWidget(),
                       ],
@@ -146,7 +148,7 @@ class _StudentInfoScreenState extends State<StudentInfoScreen> {
   }
 
   Color getRandomColor() {
-    Random random = Random();
+    final Random random = Random();
     return tenColors[random.nextInt(tenColors.length)];
   }
 
@@ -304,10 +306,9 @@ class TabScheduleWidget extends StatelessWidget {
           child: Container(
             height: 120,
             padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 12),
-
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(7),
-              color: const Color(0xFF3B82F6),
+              color:  AppColors.kPrimaryColor,
               boxShadow: const [
                 BoxShadow(
                   color: Color(0xFFbfd3ff),
@@ -317,32 +318,32 @@ class TabScheduleWidget extends StatelessWidget {
                 ),
               ],
             ),
-
             child: Row(
               children: [
                 Expanded(
                   child: RichText(
-                    text: const TextSpan(
-                      text: 'context.locale.you_achieve',
-                      style: TextStyle(
+                    text:  TextSpan(
+                      text: 'The student has completed',
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 14.0,
                         fontWeight: FontWeight.w400,
-                        fontFamily: 'Dubai',
                       ),
                       children: [
                         TextSpan(
-                          text:
-                              ' 5% ',
+                          text: ' 80% ',
                           style: TextStyle(
-                            color: Color(0xFFFACC15),
+                            color: getColorFromPercentage(0.8),
                             fontSize: 18.0,
                             fontWeight: FontWeight.w700,
                             fontFamily: 'Dubai',
+                            decoration: TextDecoration.underline,
+                            decorationThickness: 2,
+
                           ),
                         ),
-                        TextSpan(
-                          text: 'context.locale.your_schedule',
+                        const TextSpan(
+                          text: 'of his schedule.',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 14.0,
@@ -357,22 +358,33 @@ class TabScheduleWidget extends StatelessWidget {
                 CircularPercentIndicator(
                   radius: 60,
                   lineWidth: 5.0,
-                  percent: 0.2,
+                  percent: 0.8,
                   center: const Text(
-                    '5%',
+                    '80%',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 16.0,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  progressColor: const Color(0xFFFACC15),
+                  progressColor: getColorFromPercentage(0.8),
                 ),
               ],
             ),
           ),
         ),
+        SubjectListWidget(),
       ],
     );
   }
+  Color getColorFromPercentage(double percentage) {
+    if (percentage < 0.5) {
+      return const Color(0xffEF4444);
+    } else if (percentage >= 0.5 && percentage < 0.7) {
+      return const Color(0xffFB923C);
+    } else {
+      return const Color(0xff22C55E);
+    }
+  }
+
 }

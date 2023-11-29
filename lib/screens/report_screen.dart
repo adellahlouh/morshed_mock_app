@@ -3,7 +3,7 @@ import 'package:animated_button_bar/animated_button_bar.dart';
 import 'package:intl/intl.dart';
 import 'package:morshed_mock_app/colors.dart';
 import 'package:morshed_mock_app/screens/student_screen.dart';
-import 'package:morshed_mock_app/std_model.dart';
+import 'package:morshed_mock_app/models/std_model.dart';
 
 import '../constants.dart';
 

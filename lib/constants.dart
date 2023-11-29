@@ -1,4 +1,4 @@
-import 'package:morshed_mock_app/std_model.dart';
+import 'package:morshed_mock_app/models/std_model.dart';
 
 
 

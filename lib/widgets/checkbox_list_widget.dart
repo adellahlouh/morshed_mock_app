@@ -23,7 +23,6 @@ class CheckBoxListWidget extends StatelessWidget {
               value: false, // Initial value of the checkbox
               onChanged: (bool? value) {
                 // Handle checkbox state change
-                print('Checkbox in Category $index is ${value == true ? 'checked' : 'unchecked'}');
               },
             ),
             CheckboxListTile(
@@ -31,7 +30,6 @@ class CheckBoxListWidget extends StatelessWidget {
               value: false,
               onChanged: (bool? value) {
                 // Handle checkbox state change
-                print('Checkbox in Category $index is ${value == true ? 'checked' : 'unchecked'}');
               },
             ),
             // Add more CheckboxListTile widgets as needed
