@@ -39,6 +39,7 @@ dependencies:
   animated_button_bar: ^1.0.0
   bouncing_button: ^0.0.1+2
   font_awesome_flutter: ^10.6.0
+  url_launcher: ^6.2.1
 
 dev_dependencies:
   flutter_test:

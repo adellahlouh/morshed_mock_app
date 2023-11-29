@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:morshed_mock_app/colors.dart';
+import 'package:morshed_mock_app/screens/crm_screen.dart';
 import 'package:morshed_mock_app/screens/home_screen.dart';
 
 void main() {
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: AppFonts.kFontFamily,
       ),
-      home: const HomeScreen(),
+      home: const CRMScreen(),
     );
   }
 }
