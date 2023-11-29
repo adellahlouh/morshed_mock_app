@@ -89,16 +89,7 @@ class _CRMScreenState extends State<CRMScreen>
                   'Language',
                   style: buildTextStyle,
                 ),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) {
-                        return const WhoIsTheBestScreen();
-                      },
-                    ),
-                  );
-                },
+                onTap: () {},
               ),
 
               // Logout

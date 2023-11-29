@@ -9,6 +9,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 import '../constants.dart';
+import 'congrats_template_screen.dart';
 
 class WhoIsTheBestScreen extends StatefulWidget {
   const WhoIsTheBestScreen({Key? key}) : super(key: key);
@@ -142,10 +143,17 @@ class _WhoIsTheBestScreenState extends State<WhoIsTheBestScreen> {
                                         ),
                                       ),
                                     ),
-                                    // Send Congrats
                                     ElevatedButton.icon(
                                       onPressed: () {
-                                        showAlertDialog(context, model);
+                                        // showAlertDialog(context, model);
+                                        Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                            builder: (context) {
+                                              return CongratsTemplateScreen(model: model);
+                                            },
+                                          ),
+                                        );
+
                                       },
                                       icon: const Text('🎉'),
                                       label: const Text(
@@ -186,36 +194,21 @@ class _WhoIsTheBestScreenState extends State<WhoIsTheBestScreen> {
             ),
             TextButton(
               onPressed: () {
-                const link =
-                    'https://drive.google.com/file/d/19XQ1hL3AHbxgBkBJ0d9akcs8krQ2pEj0/view?usp=sharing';
-
-                final message =
-                    'Congrats ${model.fullName} for your success. You are the best.'
-                    '\n\n'
-                    'Video Link: $link';
+                // navigate to congrats template screen CongratsTemplateScreen
 
                 Navigator.of(context).pop();
-                // Loading
-                // Open share
-                // stop loading
-                setState(() {
-                  filteredList = [];
-                  isLoading = true;
-                });
 
-                Future.delayed(const Duration(milliseconds: 1500), () async {
-                  setState(() {
-                    isLoading = false;
-                  });
 
-                  await launchUrl(Uri.parse('https://wa.me/${model.phoneNumber}?text=$message'));
-                  // video link
-                  // Share.share(
-                  //   '$message',
-                  //   subject:
-                  //       'Congrats ${model.fullName} for your success. You are the best.',
-                  // );
-                });
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return CongratsTemplateScreen(model: model);
+                    },
+                  ),
+                );
+
+
+
               },
               child: const Text('Yes'),
             ),
