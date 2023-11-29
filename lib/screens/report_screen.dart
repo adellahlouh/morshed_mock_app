@@ -218,15 +218,15 @@ class FlexibleSpaceButtons extends StatelessWidget
       invertedSelection: true,
       children: [
         ButtonBarEntry(
-          onTap: () => print('First item tapped'),
+          onTap: () => debugPrint('First item tapped'),
           child: const Text('All calls'),
         ),
         ButtonBarEntry(
-          onTap: () => print('Second item tapped'),
+          onTap: () => debugPrint('Second item tapped'),
           child: const Text('Successful calls'),
         ),
         ButtonBarEntry(
-          onTap: () => print('Third item tapped'),
+          onTap: () => debugPrint('Third item tapped'),
           child: const Text('Pending calls'),
         ),
       ],
