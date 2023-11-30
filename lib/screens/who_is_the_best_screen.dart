@@ -117,14 +117,14 @@ class _WhoIsTheBestScreenState extends State<WhoIsTheBestScreen> {
                                     ElevatedButton.icon(
                                       onPressed: () async {
                                         await launchUrlString(
-                                            'tel:${model.phoneNumber}');
+                                            'tel:${model.phoneNumber}',);
                                       },
                                       icon: const Icon(
                                         Icons.call,
                                         color: AppColors.kPositive,
                                       ),
                                       label: const Text(
-                                        'Call',
+                                        '',
                                         style: TextStyle(
                                           color: Colors.black,
                                         ),
@@ -141,7 +141,7 @@ class _WhoIsTheBestScreenState extends State<WhoIsTheBestScreen> {
                                         color: AppColors.kPositive,
                                       ),
                                       label: const Text(
-                                        'Whatsapp',
+                                        '',
                                         style: TextStyle(
                                           color: Colors.black,
                                         ),
@@ -159,7 +159,7 @@ class _WhoIsTheBestScreenState extends State<WhoIsTheBestScreen> {
                                         );
 
                                       },
-                                      icon: const Text('🎉'),
+                                      icon: const Text('🎉' , style: TextStyle(fontSize: 16),),
                                       label: const Text(
                                         'Congrats',
                                         style: TextStyle(

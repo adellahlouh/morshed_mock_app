@@ -194,117 +194,147 @@ class _CRMWidgetState extends State<_CRMWidget>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return ListView.builder(
-      itemCount: stdModelList.length,
-      shrinkWrap: true,
-      itemBuilder: (_, index) {
-        final model = stdModelList[index];
-        if (model.onboardingStatus == widget.onboardingStatus ||
-            widget.onboardingStatus == OnboardingStatus.all) {
-          return GestureDetector(
-            onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) {
-                    return StudentInfoScreen(stdModel: model);
-                  },
-                ),
-              );
-            },
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8.0),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Name : ${model.fullName}',
-                        style: const TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w500),
-                      ),
-                      Text('Email : ${model.email}'),
-                      Text('Phone number : ${model.phoneNumber}'),
-                      const SizedBox(height: 8.0),
-                      Text(
-                        'Program : ${model.programName}',
-                      ),
-                      const SizedBox(height: 8.0),
-                      Text(
-                        'Last Active Date : ${DateFormat.yMEd().format(model.lastActiveDate)}',
-                      ),
-                      const SizedBox(height: 8.0),
-                      Text(
-                        'Last Call Date : ${DateFormat.yMEd().format(model.lastDateCalled)}',
-                      ),
-                      const SizedBox(height: 8.0),
-                      Row(
-                        children: [
-                          const Text(
-                            'Call Status : ',
-                          ),
-                          Text(
-                            model.callStatus.name.toUpperCase(),
-                            style: TextStyle(
-                                color: model.callStatus.color,
-                                fontWeight: FontWeight.w600,
-                                fontFamily: AppFonts.kFontFamily,
-                                fontSize: 15),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 12.0),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          ElevatedButton.icon(
-                            onPressed: () async {
-                              await launchUrlString('tel:${model.phoneNumber}');
-                            },
-                            icon: const Icon(
-                              Icons.call,
-                              color: AppColors.kPositive,
-                            ),
-                            label: const Text(
-                              'Call',
-                              style: TextStyle(
-                                color: Colors.black,
-                              ),
-                            ),
-                          ),
-                          ElevatedButton.icon(
-                            onPressed: () async {
-                              await launchUrl(Uri.parse(
-                                'https://wa.me/${model.phoneNumber}',
-                              ));
-                            },
-                            icon: const Icon(
-                              FontAwesomeIcons.whatsapp,
-                              color: AppColors.kPositive,
-                            ),
-                            label: const Text(
-                              'Whatsapp',
-                              style: TextStyle(
-                                color: Colors.black,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
+    return Column(
+      children: [
+        Container(
+          margin: const EdgeInsets.all(10),
+          child: SearchBar(
+            hintText: 'Search',
+            onChanged: (v)=>{},
+            trailing: [
+              const Icon(Icons.search),
+              const SizedBox(width: 10),
+            ],
+            elevation: MaterialStateProperty.all<double>(1),
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0),
               ),
             ),
-          );
-        }
+            backgroundColor: MaterialStateProperty.all<Color>(
+              Colors.white,
+            ),
+            shadowColor: MaterialStateProperty.all<Color>(
+              Colors.grey,
+            ),
+          ),
+        ),
 
-        return const SizedBox();
-      },
+        Expanded(
+          child: ListView.builder(
+            itemCount: stdModelList.length,
+            shrinkWrap: true,
+            itemBuilder: (_, index) {
+              final model = stdModelList[index];
+              if (model.onboardingStatus == widget.onboardingStatus ||
+                  widget.onboardingStatus == OnboardingStatus.all) {
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return StudentInfoScreen(stdModel: model);
+                        },
+                      ),
+                    );
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Name : ${model.fullName}',
+                              style: const TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.w500),
+                            ),
+                            Text('Email : ${model.email}'),
+                            Text('Phone number : ${model.phoneNumber}'),
+                            const SizedBox(height: 8.0),
+                            Text(
+                              'Program : ${model.programName}',
+                            ),
+                            const SizedBox(height: 8.0),
+                            Text(
+                              'Last Active Date : ${DateFormat.yMEd().format(model.lastActiveDate)}',
+                            ),
+                            const SizedBox(height: 8.0),
+                            Text(
+                              'Last Call Date : ${DateFormat.yMEd().format(model.lastDateCalled)}',
+                            ),
+                            const SizedBox(height: 8.0),
+                            Row(
+                              children: [
+                                const Text(
+                                  'Call Status : ',
+                                ),
+                                Text(
+                                  model.callStatus.name.toUpperCase(),
+                                  style: TextStyle(
+                                      color: model.callStatus.color,
+                                      fontWeight: FontWeight.w600,
+                                      fontFamily: AppFonts.kFontFamily,
+                                      fontSize: 15),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 12.0),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                ElevatedButton.icon(
+                                  onPressed: () async {
+                                    await launchUrlString('tel:${model.phoneNumber}');
+                                  },
+                                  icon: const Icon(
+                                    Icons.call,
+                                    color: AppColors.kPositive,
+                                  ),
+                                  label: const Text(
+                                    'Call',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ),
+                                ElevatedButton.icon(
+                                  onPressed: () async {
+                                    await launchUrl(Uri.parse(
+                                      'https://wa.me/${model.phoneNumber}',
+                                    ));
+                                  },
+                                  icon: const Icon(
+                                    FontAwesomeIcons.whatsapp,
+                                    color: AppColors.kPositive,
+                                  ),
+                                  label: const Text(
+                                    'Whatsapp',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                );
+              }
+
+              return const SizedBox();
+            },
+          ),
+        ),
+      ],
     );
   }
 
