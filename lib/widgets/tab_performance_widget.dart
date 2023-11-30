@@ -12,10 +12,10 @@ class TabPerformanceWidget extends StatefulWidget {
 
 class _TabPerformanceWidgetState extends State<TabPerformanceWidget> {
   final List<String> categories = [
-    'Category 1',
-    'Category 2',
-    'Category 3',
-    'Category 4',
+    'Math',
+    'Physics',
+    'Chemistry',
+    'English',
   ];
 
   final String link = 'https://dl.abwaab.com/YNvF';
@@ -36,28 +36,28 @@ class _TabPerformanceWidgetState extends State<TabPerformanceWidget> {
               title: Text(categories[index]),
               children: [
                 CheckboxListTile(
-                  title: const Text('Item 1'),
+                  title: const Text('Lesson 1'),
                   value: false, // Initial value of the checkbox
                   onChanged: (bool? value) => {
                     // Handle checkbox state change
                   },
                 ),
                 CheckboxListTile(
-                  title: const Text('Item 2'),
+                  title: const Text('Lesson 2'),
                   value: false,
                   onChanged: (bool? value) => {
                     // Handle checkbox state change
                   },
                 ),
                 CheckboxListTile(
-                  title: const Text('Item 3'),
+                  title: const Text('Lesson 3'),
                   value: false,
                   onChanged: (bool? value) => {
                     // Handle checkbox state change
                   },
                 ),
                 CheckboxListTile(
-                  title: const Text('Item 4'),
+                  title: const Text('Lesson 4'),
                   value: false,
                   onChanged: (bool? value) => {
                     // Handle checkbox state change
