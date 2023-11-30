@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:morshed_mock_app/colors.dart';
 import 'package:morshed_mock_app/constants.dart';
+import 'package:morshed_mock_app/screens/notification_screen.dart';
 import 'package:morshed_mock_app/screens/student_screen.dart';
 import 'package:morshed_mock_app/screens/who_is_the_best_screen.dart';
 import 'package:morshed_mock_app/models/std_model.dart';
@@ -80,7 +81,6 @@ class _CRMScreenState extends State<CRMScreen>
                   style: buildTextStyle,
                 ),
                 onTap: () {},
-
               ),
 
               // Language Tile
@@ -99,7 +99,6 @@ class _CRMScreenState extends State<CRMScreen>
                   style: buildTextStyle,
                 ),
                 onTap: () {},
-
               ),
             ],
           ),
@@ -122,7 +121,15 @@ class _CRMScreenState extends State<CRMScreen>
           ),
           actions: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return NotificationScreen();
+                    },
+                  ),
+                );
+              },
               icon: const Icon(
                 FontAwesomeIcons.bell,
               ),
@@ -270,7 +277,11 @@ class _CRMWidgetState extends State<_CRMWidget>
                             ),
                           ),
                           ElevatedButton.icon(
-                            onPressed: () {},
+                            onPressed: () async {
+                              await launchUrl(Uri.parse(
+                                'https://wa.me/${model.phoneNumber}',
+                              ));
+                            },
                             icon: const Icon(
                               FontAwesomeIcons.whatsapp,
                               color: AppColors.kPositive,
@@ -283,7 +294,7 @@ class _CRMWidgetState extends State<_CRMWidget>
                             ),
                           ),
                         ],
-                      )
+                      ),
                     ],
                   ),
                 ),

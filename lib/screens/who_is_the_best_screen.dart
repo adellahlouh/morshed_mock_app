@@ -131,7 +131,11 @@ class _WhoIsTheBestScreenState extends State<WhoIsTheBestScreen> {
                                       ),
                                     ),
                                     ElevatedButton.icon(
-                                      onPressed: () {},
+                                      onPressed: () async {
+                                        await launchUrl(Uri.parse(
+                                          'https://wa.me/${model.phoneNumber}',
+                                        ));
+                                      },
                                       icon: const Icon(
                                         FontAwesomeIcons.whatsapp,
                                         color: AppColors.kPositive,

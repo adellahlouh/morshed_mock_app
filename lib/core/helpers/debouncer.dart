@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 class Debouncer {
   Debouncer(this.interval);
@@ -26,4 +27,25 @@ class Debouncer {
     _action = null;
     _timer = null;
   }
+}
+
+Widget getCenterCircularProgress({
+  double? padding,
+  double? size,
+  Color? color,
+  double? value,
+  double strokeWidth = 3.0,
+}) {
+  return Container(
+    padding: EdgeInsets.all(padding ?? 0.0),
+    height: size,
+    width: size,
+    child: Center(
+      child: CircularProgressIndicator(
+        value: value,
+        strokeWidth: strokeWidth,
+        valueColor: color != null ? AlwaysStoppedAnimation<Color>(color) : null,
+      ),
+    ),
+  );
 }
