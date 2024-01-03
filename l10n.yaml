@@ -1,0 +1,7 @@
+# Abwaab Notes
+# Change the arb-dir to your directory of downloaded [abwaab_package] project.
+# You will find it inside DartPackages directory.
+
+arb-dir: lib/I10n
+template-arb-file: app_ar.arb
+output-localization-file: app_localizations.dart

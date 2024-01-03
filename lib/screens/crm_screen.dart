@@ -1,17 +1,20 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:morshed_mock_app/colors.dart';
 import 'package:morshed_mock_app/constants.dart';
+import 'package:morshed_mock_app/main.dart';
 import 'package:morshed_mock_app/screens/notification_screen.dart';
 import 'package:morshed_mock_app/screens/student_screen.dart';
 import 'package:morshed_mock_app/screens/who_is_the_best_screen.dart';
 import 'package:morshed_mock_app/models/std_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import 'report_screen.dart';
 
 class CRMScreen extends StatefulWidget {
   const CRMScreen({super.key});
@@ -33,21 +36,21 @@ class _CRMScreenState extends State<CRMScreen>
             children: [
               // Drawer Header - Welcome Message
 
-              const SizedBox(
+               SizedBox(
                 height: 50,
                 child: Text(
-                  'Welcome Morshed 👋',
+                  '${AppLocalizations.of(context)!.welcomeMorshed} 👋',
                   textAlign: TextAlign.center,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.black,
                     fontSize: 24,
                   ),
                 ),
               ),
               ListTile(
-                title: const Text(
-                  'Who Is The Best? 🚀',
-                  style: TextStyle(
+                title:  Text(
+                  ' ${AppLocalizations.of(context)!.theBest} 🚀',
+                  style: const TextStyle(
                     color: AppColors.kPrimaryColor,
                     fontWeight: FontWeight.bold,
                     fontFamily: AppFonts.kFontFamily,
@@ -68,7 +71,7 @@ class _CRMScreenState extends State<CRMScreen>
               // Settings Tile
               ListTile(
                 title: Text(
-                  'Settings',
+                  '${AppLocalizations.of(context)!.settings}',
                   style: buildTextStyle,
                 ),
                 onTap: () {},
@@ -77,7 +80,7 @@ class _CRMScreenState extends State<CRMScreen>
               // About Tile
               ListTile(
                 title: Text(
-                  'About',
+                  '${AppLocalizations.of(context)!.about}',
                   style: buildTextStyle,
                 ),
                 onTap: () {},
@@ -86,16 +89,18 @@ class _CRMScreenState extends State<CRMScreen>
               // Language Tile
               ListTile(
                 title: Text(
-                  'Language',
+                  '${AppLocalizations.of(context)!.language}',
                   style: buildTextStyle,
                 ),
-                onTap: () {},
+                onTap: () {
+                  localValue.value = localValue.value.languageCode =='ar' ? const Locale('en') : const Locale('ar');
+                },
               ),
 
               // Logout
               ListTile(
                 title: Text(
-                  'Logout',
+                  '${AppLocalizations.of(context)!.logout}',
                   style: buildTextStyle,
                 ),
                 onTap: () {},
@@ -104,7 +109,7 @@ class _CRMScreenState extends State<CRMScreen>
           ),
         ),
         appBar: AppBar(
-          title: const Text('Home Screen '),
+          title:  Text('${AppLocalizations.of(context)!.homeScreen} '),
           centerTitle: true,
           elevation: 8,
           leading: Builder(
@@ -135,17 +140,17 @@ class _CRMScreenState extends State<CRMScreen>
               ),
             ),
           ],
-          bottom: const TabBar(
-            labelStyle: TextStyle(fontWeight: FontWeight.w500, fontSize: 15),
+          bottom:  TabBar(
+            labelStyle: const TextStyle(fontWeight: FontWeight.w500, fontSize: 15),
             tabs: [
               Tab(
-                text: 'All Contacts',
+                text: '${AppLocalizations.of(context)!.allContacts}',
               ),
               Tab(
-                text: 'Onboarding',
+                text: '${AppLocalizations.of(context)!.onBoarding}',
               ),
               Tab(
-                text: 'Follow up',
+                text: '${AppLocalizations.of(context)!.followUp}',
               ),
             ],
           ),
@@ -168,7 +173,7 @@ class _CRMScreenState extends State<CRMScreen>
   }
 
   TextStyle get buildTextStyle {
-    return TextStyle(
+    return const TextStyle(
       color: Colors.black,
       fontWeight: FontWeight.bold,
       fontFamily: AppFonts.kFontFamily,
@@ -199,7 +204,7 @@ class _CRMWidgetState extends State<_CRMWidget>
         Container(
           margin: const EdgeInsets.all(10),
           child: SearchBar(
-            hintText: 'Search',
+            hintText: '${AppLocalizations.of(context)!.search}',
             onChanged: (v)=>{},
             trailing: [
               const Icon(Icons.search),
@@ -250,40 +255,29 @@ class _CRMWidgetState extends State<_CRMWidget>
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Name : ${model.fullName}',
+                              '${AppLocalizations.of(context)!.stdName} : ${model.fullName}',
                               style: const TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.w500),
+                                  fontSize: 16, fontWeight: FontWeight.w500,),
                             ),
-                            Text('Email : ${model.email}'),
-                            Text('Phone number : ${model.phoneNumber}'),
+                            Text('${AppLocalizations.of(context)!.stdId} : ${Random().nextInt(100000)}'),
+                            const SizedBox(height: 8.0),
+
+                            Text('${AppLocalizations.of(context)!.stdPhone} : ${model.phoneNumber}'),
+
+
                             const SizedBox(height: 8.0),
                             Text(
-                              'Program : ${model.programName}',
+                              '${AppLocalizations.of(context)!.lastActiveDate} : ${DateFormat.yMEd(localValue.value.languageCode).format(model.lastActiveDate)}',
                             ),
                             const SizedBox(height: 8.0),
                             Text(
-                              'Last Active Date : ${DateFormat.yMEd().format(model.lastActiveDate)}',
+                              '${AppLocalizations.of(context)!.lastSuccessContactDate} : ${DateFormat.yMEd(localValue.value.languageCode).format(model.lastDateCalled)}',
                             ),
                             const SizedBox(height: 8.0),
                             Text(
-                              'Last Call Date : ${DateFormat.yMEd().format(model.lastDateCalled)}',
+                              '${AppLocalizations.of(context)!.onBoardingDate} : ${DateFormat.yMEd(localValue.value.languageCode).format(model.lastDateCalled)}',
                             ),
-                            const SizedBox(height: 8.0),
-                            Row(
-                              children: [
-                                const Text(
-                                  'Call Status : ',
-                                ),
-                                Text(
-                                  model.callStatus.name.toUpperCase(),
-                                  style: TextStyle(
-                                      color: model.callStatus.color,
-                                      fontWeight: FontWeight.w600,
-                                      fontFamily: AppFonts.kFontFamily,
-                                      fontSize: 15),
-                                ),
-                              ],
-                            ),
+
                             const SizedBox(height: 12.0),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -296,9 +290,9 @@ class _CRMWidgetState extends State<_CRMWidget>
                                     Icons.call,
                                     color: AppColors.kPositive,
                                   ),
-                                  label: const Text(
-                                    'Call',
-                                    style: TextStyle(
+                                  label:  Text(
+                                    '${AppLocalizations.of(context)!.call}',
+                                    style: const TextStyle(
                                       color: Colors.black,
                                     ),
                                   ),
@@ -313,9 +307,9 @@ class _CRMWidgetState extends State<_CRMWidget>
                                     FontAwesomeIcons.whatsapp,
                                     color: AppColors.kPositive,
                                   ),
-                                  label: const Text(
-                                    'Whatsapp',
-                                    style: TextStyle(
+                                  label:  Text(
+                                    '${AppLocalizations.of(context)!.whatsapp}',
+                                    style: const TextStyle(
                                       color: Colors.black,
                                     ),
                                   ),

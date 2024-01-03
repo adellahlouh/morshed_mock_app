@@ -11,16 +11,27 @@ class TabPerformanceWidget extends StatefulWidget {
 }
 
 class _TabPerformanceWidgetState extends State<TabPerformanceWidget> {
-  final List<String> categories = [
-    'Math',
-    'Physics',
-    'Chemistry',
-    'English',
-  ];
+  final Map<String, List<String>> categories = {
+    'Math': ['Algebra', 'Geometry', 'Calculus', 'Number Theory'],
+    'Physics': [
+      'Classical Mechanics',
+      'Thermodynamics',
+      'Electromagnetism',
+      'Optics',
+      'Fluid Mechanics'
+    ],
+    'Chemistry': [
+      'General Chemistry',
+      'Organic Chemistry',
+      'Inorganic Chemistry',
+      'Physical Chemistry'
+    ],
+    'English': ['Verb', 'Adjective', 'Adverb'],
+  };
 
   final String link = 'https://dl.abwaab.com/YNvF';
 
-  bool isLoading = false ;
+  bool isLoading = false;
 
   // Replace this with your link
   @override
@@ -32,38 +43,24 @@ class _TabPerformanceWidgetState extends State<TabPerformanceWidget> {
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (context, index) {
+            final List<String> keys = categories.keys.toList();
+
             return ExpansionTile(
-              title: Text(categories[index]),
-              children: [
-                CheckboxListTile(
-                  title: const Text('Lesson 1'),
-                  value: false, // Initial value of the checkbox
-                  onChanged: (bool? value) => {
-                    // Handle checkbox state change
-                  },
-                ),
-                CheckboxListTile(
-                  title: const Text('Lesson 2'),
-                  value: false,
-                  onChanged: (bool? value) => {
-                    // Handle checkbox state change
-                  },
-                ),
-                CheckboxListTile(
-                  title: const Text('Lesson 3'),
-                  value: false,
-                  onChanged: (bool? value) => {
-                    // Handle checkbox state change
-                  },
-                ),
-                CheckboxListTile(
-                  title: const Text('Lesson 4'),
-                  value: false,
-                  onChanged: (bool? value) => {
-                    // Handle checkbox state change
-                  },
-                ),
-              ],
+              title: Text(keys[index]),
+              children: categories[keys[index]]!
+                  .map(
+                    (e) => Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: CheckboxListTile(
+                        title:  Text('${e.toString()}'),
+                        value: false, // Initial value of the checkbox
+                        onChanged: (bool? value) => {
+                          // Handle checkbox state change
+                        },
+                      ),
+                    ),
+                  )
+                  .toList(),
             );
           },
         ),
@@ -74,52 +71,53 @@ class _TabPerformanceWidgetState extends State<TabPerformanceWidget> {
             color: AppColors.kPrimaryColor,
             onPressed: () {
               setState(() {
-                isLoading = true ;
+                isLoading = true;
               });
-              Future.delayed(const Duration(seconds: 2))
-                  .then((value) {
+              Future.delayed(const Duration(seconds: 2)).then((value) {
                 setState(() {
-                  isLoading = false ;
+                  isLoading = false;
                 });
-                    return showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            title: const Text('Custom test deep link'),
-                            content: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  link,
-                                  style: const TextStyle(
-                                    color: AppColors.kPrimaryColor,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                const SizedBox(height: 20),
-                                ElevatedButton(
-                                  onPressed: () => _copyLink(context),
-                                  child: const Text('Copy Link'),
-                                ),
-                              ],
+                return showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: const Text('Custom test deep link'),
+                      content: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            link,
+                            style: const TextStyle(
+                              color: AppColors.kPrimaryColor,
+                              fontWeight: FontWeight.bold,
                             ),
-                          );
-                        },
-                      );
-                  });
+                          ),
+                          const SizedBox(height: 20),
+                          ElevatedButton(
+                            onPressed: () => _copyLink(context),
+                            child: const Text('Copy Link'),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                );
+              });
             },
-            child: isLoading ? getCenterCircularProgress(
-              color: Colors.white,
-              size: 24.0,
-            ) : const Text(
-              'Create custom test',
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w500,
-                fontSize: 16,
-              ),
-            ),
+            child: isLoading
+                ? getCenterCircularProgress(
+                    color: Colors.white,
+                    size: 24.0,
+                  )
+                : const Text(
+                    'Create custom test',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16,
+                    ),
+                  ),
           ),
         ),
       ],

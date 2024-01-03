@@ -1,0 +1,43 @@
+{
+  "stdName": "اسم الطالب",
+  "stdId": "رقم الطالب",
+  "stdPhone" : "رقم هاتف الطالب",
+  "lastActiveDate" :"تاريخ آخر تفاعل",
+  "lastSuccessContactDate" : "تاريخ آخر محاولة للاتصال",
+  "onBoardingDate" : "تاريخ الانضمام",
+  "stdParentNumber" : "رقم هاتف ولي الأمر",
+  "lastAttemptedContact" : "تاريخ آخر اتصال ناجح",
+  "lastCallType" : "نوع آخر مكالمة (لولي الأمر أو الطالب)",
+  "bestSubject" : "أفضل مادة (مع الدرجة)",
+  "worstSubject" : "أسوأ مادة (مع الدرجة)",
+  "reportCardLink" : "رابط الشهادة",
+  "addNote" : "أضف ملاحظة",
+  "notes" : "ملاحظات",
+  "saveNote" : "حفظ الملاحظة",
+  "stdInfo" : "معلومات الطالب",
+  "schedule" : "الجدول",
+  "customTest" : "اختبار مخصص",
+  "call" : "اتصال",
+  "whatsapp" : "واتس اب",
+  "search" : "بحث",
+  "allContacts" : "All Contacts",
+  "onBoarding" : "On Boarding",
+  "followUp" : "Follow up",
+  "homeScreen" : "الصفحة الرئيسية",
+  "examReminders" : "تذكيرات الامتحانات",
+  "settings" : "الاعدادات",
+  "about" : "حول التطبيق",
+  "language" : "تغير اللغه للانجليزيه",
+  "logout" : "تسجيل الخروج",
+  "theBest" : "من هو الأفضل؟",
+  "welcomeMorshed" : "اهلا مرشد"
+
+
+
+
+
+
+
+
+
+}

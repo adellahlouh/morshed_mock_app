@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class NotePage extends StatefulWidget {
   @override
@@ -33,9 +34,9 @@ class _NotePageState extends State<NotePage> {
         children: [
           TextField(
             controller: _noteController,
-            decoration: const InputDecoration(
-              labelText: 'Add Note',
-              border: OutlineInputBorder(),
+            decoration:  InputDecoration(
+              labelText: '${AppLocalizations.of(context)!.addNote}',
+              border: const OutlineInputBorder(),
             ),
             maxLines: 4,
             keyboardType: TextInputType.multiline,
@@ -43,12 +44,12 @@ class _NotePageState extends State<NotePage> {
           const SizedBox(height: 20),
           ElevatedButton(
             onPressed: _saveNote,
-            child: const Text('Save Note'),
+            child:  Text('${AppLocalizations.of(context)!.saveNote}'),
           ),
           const SizedBox(height: 20),
-          const Text(
-            'Note for the Student:',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+           Text(
+            '${AppLocalizations.of(context)!.notes}',
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 10),
           Text(

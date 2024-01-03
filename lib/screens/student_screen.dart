@@ -2,17 +2,14 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:intl/intl.dart';
 import 'package:morshed_mock_app/colors.dart';
 import 'package:morshed_mock_app/models/std_model.dart';
 import 'package:morshed_mock_app/widgets/tab_performance_widget.dart';
-import 'package:morshed_mock_app/widgets/circular_progress_indicator.dart';
-import 'package:morshed_mock_app/widgets/note_widget.dart';
-import 'package:morshed_mock_app/widgets/subject_list_widget.dart';
 import 'package:morshed_mock_app/widgets/tab_info_widget.dart';
 import 'package:morshed_mock_app/widgets/tab_schedule_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class StudentInfoScreen extends StatefulWidget {
   final StdModel stdModel;
@@ -29,7 +26,6 @@ class _StudentInfoScreenState extends State<StudentInfoScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
-        title: const Text('Student Info'),
       ),
       body: DefaultTabController(
         length: 3,
@@ -106,11 +102,11 @@ class _StudentInfoScreenState extends State<StudentInfoScreen> {
               child: AppBar(
                 title: const SizedBox(),
                 leading: const SizedBox(),
-                bottom: const TabBar(
+                bottom:  TabBar(
                   tabs: [
-                    Tab(text: 'Student Info'),
-                    Tab(text: 'Schedule'),
-                    Tab(text: 'Performance'),
+                    Tab(text: '${AppLocalizations.of(context)!.stdInfo}'),
+                    Tab(text: '${AppLocalizations.of(context)!.schedule}'),
+                    Tab(text: '${AppLocalizations.of(context)!.customTest}'),
                   ],
                 ),
               ),

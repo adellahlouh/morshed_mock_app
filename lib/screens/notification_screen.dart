@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:morshed_mock_app/models/notification_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class NotificationScreen extends StatelessWidget {
    NotificationScreen({super.key});
@@ -131,7 +132,7 @@ class NotificationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Exam Reminders'),
+        title:  Text('${AppLocalizations.of(context)!.examReminders}'),
       ),
       body: ListView.builder(
         itemCount: notifications.length,
