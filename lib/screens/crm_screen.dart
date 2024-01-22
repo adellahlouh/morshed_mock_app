@@ -47,26 +47,26 @@ class _CRMScreenState extends State<CRMScreen>
                   ),
                 ),
               ),
-              ListTile(
-                title:  Text(
-                  ' ${AppLocalizations.of(context)!.theBest} 🚀',
-                  style: const TextStyle(
-                    color: AppColors.kPrimaryColor,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: AppFonts.kFontFamily,
-                  ),
-                ),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) {
-                        return const WhoIsTheBestScreen();
-                      },
-                    ),
-                  );
-                },
-              ),
+              // ListTile(
+              //   title:  Text(
+              //     ' ${AppLocalizations.of(context)!.theBest} 🚀',
+              //     style: const TextStyle(
+              //       color: AppColors.kPrimaryColor,
+              //       fontWeight: FontWeight.bold,
+              //       fontFamily: AppFonts.kFontFamily,
+              //     ),
+              //   ),
+              //   onTap: () {
+              //     Navigator.push(
+              //       context,
+              //       MaterialPageRoute(
+              //         builder: (_) {
+              //           return const WhoIsTheBestScreen();
+              //         },
+              //       ),
+              //     );
+              //   },
+              // ),
 
               // Settings Tile
               ListTile(
@@ -78,13 +78,13 @@ class _CRMScreenState extends State<CRMScreen>
               ),
 
               // About Tile
-              ListTile(
-                title: Text(
-                  '${AppLocalizations.of(context)!.about}',
-                  style: buildTextStyle,
-                ),
-                onTap: () {},
-              ),
+              // ListTile(
+              //   title: Text(
+              //     '${AppLocalizations.of(context)!.about}',
+              //     style: buildTextStyle,
+              //   ),
+              //   onTap: () {},
+              // ),
 
               // Language Tile
               ListTile(

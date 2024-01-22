@@ -68,34 +68,17 @@ class TabInfoWidget extends StatelessWidget {
           ),
           subtitle:  const Text('+962789461941'),
         ),
-        Container(
-          decoration: const BoxDecoration(
-            color: AppColors.kSecondaryBlueColor,
-          ),
-
-          child: ListTile(
-            title:  Text(
-              '${AppLocalizations.of(context)!.lastActiveDate}',
-              style: const TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            subtitle: Text(DateFormat.yMMMd(localValue.value.languageCode).format(stdModel.lastActiveDate)),
-          ),
-        ),
         ListTile(
           title:  Text(
-            '${AppLocalizations.of(context)!.lastAttemptedContact}',
+            '${AppLocalizations.of(context)!.lastActiveDate}',
             style: const TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.w600,
             ),
           ),
-          subtitle: Text(
-            DateFormat.yMMMd(localValue.value.languageCode).format(stdModel.lastDateCalled),
-          ),
+          subtitle: Text(DateFormat.yMMMd(localValue.value.languageCode).format(stdModel.lastActiveDate)),
         ),
+
         Container(
           decoration: const BoxDecoration(
             color: AppColors.kSecondaryBlueColor,
@@ -179,27 +162,7 @@ class TabInfoWidget extends StatelessWidget {
             style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
           ),
         ),
-        Container(
-          decoration: const BoxDecoration(
-            color: AppColors.kSecondaryBlueColor,
-          ),
-          child: ListTile(
-            title: const Text(
-              'Call Status',
-              style: TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            subtitle: Text(
-              stdModel.callStatus.name.toUpperCase(),
-              style: TextStyle(
-                color: stdModel.callStatus.color,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ),
-        ),
+
         NotePage(),
         const SizedBox(height: 60.0),
       ],
